@@ -1,0 +1,49 @@
+{
+  user(id: 1) {
+    id
+    name
+    username
+    address {
+      street
+      suite
+      city
+      zipcode
+      geo {
+        lat
+        lng
+      }
+    }
+    phone
+    website
+    company {
+      name
+      catchPhrase
+      bs
+    }
+  }
+}
+
+{
+  allUser {
+    id
+    name
+    username
+    address {
+      street
+      suite
+      city
+      zipcode
+      geo {
+        lat
+        lng
+      }
+    }
+    phone
+    website
+    company {
+      name
+      catchPhrase
+      bs
+    }
+  }
+}
