@@ -34,7 +34,7 @@ type user{
   company:company
 }
 type Query{
-  user(id:Int!):user
+  users(id:Int!):user
   username(name:String!):user
   allUser:[user]
   finduser(id:Int!, name:String):user
@@ -44,7 +44,7 @@ type Query{
 
 const resolvers = {
   Query: {
-    user(_,{ id }) {
+    users(_,{ id }) {
       const data = Object.keys(fakeDatabase).filter(element => {
         if (fakeDatabase[element].id == id) {
           return element;
@@ -63,7 +63,7 @@ const resolvers = {
     allUser() {
       return fakeDatabase;
     },
-    finduser({id},{name}){
+    finduser(_,{id,name}){
       const data = Object.keys(fakeDatabase).filter(element => {
         if (fakeDatabase[element].name == name && fakeDatabase[element].id == id) {
           return element;
@@ -80,10 +80,9 @@ const resolvers = {
       return fakeDatabase[data];
     }
   }
-
 };
 
-//typeDefs와 resolvers를 결합해서 하나의 스키마로 만들어 줍니다. 이때 중복되는 Type의 경우에는 한번만 실행됩니다.
+
 
 const schema = makeExecutableSchema({ 
   typeDefs,
